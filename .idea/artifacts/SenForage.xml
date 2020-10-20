@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="SenForage">
+    <output-path>$PROJECT_DIR$/out/artifacts/SenForage</output-path>
+    <root id="archive" name="SenForage.war">
+      <element id="javaee-facet-resources" facet="SenForage/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="SenForage" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
