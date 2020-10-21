@@ -14,7 +14,29 @@
             </div>
             <!-- Card Body -->
             <div class="card-body">
-                Tableau
+                <table class="table table-bordered">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom de Famille</th>
+                        <th scope="col">Village</th>
+                        <th scope="col">Adresse</th>
+                        <th scope="col">Telephone</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    <c:forEach items="${clients}" var="client">
+                        <tr>
+                            <th scope="row"><c:out value="${client.id}" /></th>
+                            <td><c:out value="${client.nomFamille}" /></td>
+                            <td><c:out value="${client.village}" /></td>
+                            <td><c:out value="${client.adresse}" /></td>
+                            <td><c:out value="${client.numTel}" /></td>
+                            <td>
+                                <!-- <a href="< c:out value='$ {base_url}Utilisateur/edit/$ {user.idUser}' />" >Edit</a>-->
+                                Edit
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </table>
             </div>
         </div>
     </div>
@@ -37,16 +59,30 @@
                         <input class="form-control" type="text" name="nomFamille" />
                     </div>
                     <div class="form-group">
-                        <label>Village</label>
-                        <input class="form-control" type="text" name="village" />
-                    </div>
-                    <div class="form-group">
                         <label>Adresse</label>
                         <input class="form-control" type="text" name="adresse" />
                     </div>
                     <div class="form-group">
                         <label>Telephone</label>
                         <input class="form-control" type="text" name="telephone" />
+                    </div>
+                    <div class="form-group">
+                        <label>Village</label>
+                        <select class="form-control" name="village">
+                            <option>Selectionnez un village</option>
+                            <c:forEach items="${villages}" var="village">
+                                <option value="${village.idVillage}"> <c:out value="${village.nom}" /> </option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Utilisateur</label>
+                        <select class="form-control" name="user">
+                            <option>Selectionnez un Utilisateur</option>
+                            <c:forEach items="${utilisateurs}" var="utilisateur">
+                                <option value="${utilisateur.idUser}"> <c:out value="${utilisateur.prenom}" /> </option>
+                            </c:forEach>
+                        </select>
                     </div>
                     <div>
                         <input class="btn btn-success" type="submit" value="Envoyer"/>

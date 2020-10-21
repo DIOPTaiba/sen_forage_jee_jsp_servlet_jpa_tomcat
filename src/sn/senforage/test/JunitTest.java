@@ -21,7 +21,7 @@ public class JunitTest {
 
     }
 
-    @Test
+    /*@Test
     public void testAddClient() {
         IClient clientdao = new ClientImpl();
         Client client = new Client();
@@ -32,5 +32,5 @@ public class JunitTest {
 
         clientdao.add(client);
 
-    }
+    }*/
 }

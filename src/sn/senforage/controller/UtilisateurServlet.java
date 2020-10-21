@@ -25,6 +25,7 @@ public class UtilisateurServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //resp.getWriter().println("ok");
+        req.setAttribute("utilisateurs", utilisateurdao.listUtilisateur());
         req.getRequestDispatcher("utilisateur/add.jsp").forward(req, resp);
     }
 

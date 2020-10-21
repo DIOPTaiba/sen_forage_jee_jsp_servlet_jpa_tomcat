@@ -1,8 +1,9 @@
 package sn.senforage.controller;
 
-import sn.senforage.dao.ClientImpl;
-import sn.senforage.dao.IClient;
+import sn.senforage.dao.*;
 import sn.senforage.entities.Client;
+import sn.senforage.entities.Utilisateur;
+import sn.senforage.entities.Village;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -16,31 +17,46 @@ import java.io.IOException;
 public class ClientServlet extends HttpServlet {
 
     private IClient clientdao;
+    private IVillage villagedao;
+    private IUtilisateur utilisateurdao;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         clientdao = new ClientImpl();
+        villagedao = new VillageImpl();
+        utilisateurdao = new UtilisateurImpl();
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //resp.getWriter().println("ok");
+
+        req.setAttribute("clients", clientdao.listClient());
+        req.setAttribute("villages", villagedao.listVillage());
+        req.setAttribute("utilisateurs", utilisateurdao.listUtilisateur());
         req.getRequestDispatcher("client/add.jsp").forward(req, resp);
+
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String nomFamille = req.getParameter("nomFamille").toString();
-        String village = req.getParameter("village").toString();
+        String idvillage = req.getParameter("village").toString();
+        String idUser = req.getParameter("user").toString();
         String adresse = req.getParameter("adresse").toString();
         String telephone = req.getParameter("telephone").toString();
 
+        Village villageRecu = villagedao.getVillageById(idvillage);
+        Utilisateur userRecu = utilisateurdao.getUserById(idUser);
+
         Client client = new Client();
         client.setNomFamille(nomFamille);
-        client.setVillage(village);
+        client.setVillage(villageRecu);
+        client.setUtilisateur(userRecu);
         client.setAdresse(adresse);
         client.setNumTel(telephone);
+
 
         int ok = clientdao.add(client);
         //resp.getWriter().println(ok);

@@ -32,7 +32,16 @@ public class VillageImpl implements IVillage {
     }
 
     @Override
-    public List<Village> list() {
+    public List<Village> listVillage() {
         return em.createQuery("SELECT v FROM Village v").getResultList();
     }
+
+    @Override
+    public Village getVillageById(String idVillage) {
+        Village village = (Village) em.createQuery("SELECT v FROM Village v WHERE v.idVillage=:n")
+                .setParameter("n",idVillage).getSingleResult();
+
+        return village;
+    }
+
 }

@@ -14,7 +14,33 @@
             </div>
             <!-- Card Body -->
             <div class="card-body">
-                Tableau
+                <table class="table table-bordered">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Identifiant Village</th>
+                        <th scope="col"> Nom Village</th>
+                        <th scope="col">Responsable</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    <%
+                        int numero = 1 ;
+                        //pageContext.setAttribute("valeur", new Integer(numero));
+                    %>
+                    <c:set var="numero" value="1" scope="page" />
+                    <c:forEach items="${villages}" var="village">
+                        <tr>
+                            <th scope="row"><c:out value="${numero}" /></th>
+                            <td><c:out value="${village.idVillage}" /></td>
+                            <td><c:out value="${village.nom}" /></td>
+                            <td><c:out value="${village.utilisateur}" /></td>
+                            <td>
+                                <!-- <a href="< c:out value='$ {base_url}Utilisateur/edit/$ {user.idUser}' />" >Edit</a>-->
+                                Edit
+                            </td>
+                        </tr>
+                        <c:set var="numero" value="${numero}" scope="page" />
+                    </c:forEach>
+                </table>
             </div>
         </div>
     </div>
@@ -39,6 +65,15 @@
                     <div class="form-group">
                         <label>Nom village</label>
                         <input class="form-control" type="text" name="nomVillage" />
+                    </div>
+                    <div class="form-group">
+                        <label>Utilisateur</label>
+                        <select class="form-control" name="idUser">
+                            <option>Selectionnez un Utilisateur</option>
+                            <c:forEach items="${utilisateurs}" var="utilisateur">
+                                <option value="${utilisateur.idUser}"> <c:out value="${utilisateur.prenom}" /> </option>
+                            </c:forEach>
+                        </select>
                     </div>
                     <div>
                         <input class="btn btn-success" type="submit" value="Envoyer"/>

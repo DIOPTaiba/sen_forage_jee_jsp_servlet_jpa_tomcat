@@ -34,7 +34,14 @@ public class UtilisateurImpl implements IUtilisateur {
     }
 
     @Override
-    public List<Utilisateur> list() {
+    public List<Utilisateur> listUtilisateur() {
         return em.createQuery("SELECT u FROM Utilisateur u").getResultList();
+    }
+
+    @Override
+    public Utilisateur getUserById(String idUser){
+
+        Utilisateur utilisateur = (Utilisateur) em.createQuery("SELECT u FROM Utilisateur u WHERE u.idUser=:n").setParameter("n",idUser).getSingleResult();
+        return utilisateur;
     }
 }

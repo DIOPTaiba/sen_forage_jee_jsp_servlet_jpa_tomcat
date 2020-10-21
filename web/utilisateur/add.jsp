@@ -14,7 +14,27 @@
             </div>
             <!-- Card Body -->
             <div class="card-body">
-                Tableau
+                <table class="table table-bordered">
+                    <tr>
+                        <th scope="col">IdUtilisateur</th>
+                        <th scope="col">Prenom</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    <c:forEach items="${utilisateurs}" var="user">
+                        <tr>
+                            <td><c:out value="${user.idUser}" /></td>
+                            <td><c:out value="${user.nom}" /></td>
+                            <td><c:out value="${user.prenom}" /></td>
+                            <td><c:out value="${user.email}" /></td>
+                            <td>
+                                <!-- <a href="< c:out value='$ {base_url}Utilisateur/edit/$ {user.idUser}' />" >Edit</a>-->
+                                Edit
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </table>
             </div>
         </div>
     </div>

@@ -1,6 +1,7 @@
 package sn.senforage.dao;
 
 import sn.senforage.entities.Client;
+import sn.senforage.entities.Village;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -34,7 +35,9 @@ public class ClientImpl implements IClient {
     }
 
     @Override
-    public List<Client> list() {
+    public List<Client> listClient() {
         return em.createQuery("SELECT c FROM Client c").getResultList();
     }
+
+
 }

@@ -1,11 +1,11 @@
 package sn.senforage.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
-public class Utilisateur {
+public class Utilisateur implements Serializable {
 
     @Id
     private String idUser;
@@ -13,8 +13,20 @@ public class Utilisateur {
     private String prenom;
     private String email;
     private String password;
+    @OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY)
+    private List<Client> clients;
+    @OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY)
+    private List<Village> villages;
 
     public Utilisateur() {
+    }
+
+    public Utilisateur(String idUser, String nom, String prenom, String email, String password) {
+        this.idUser = idUser;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.email = email;
+        this.password = password;
     }
 
     public String getIdUser() {
@@ -55,5 +67,21 @@ public class Utilisateur {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
+    }
+
+    public List<Village> getVillages() {
+        return villages;
+    }
+
+    public void setVillages(List<Village> villages) {
+        this.villages = villages;
     }
 }

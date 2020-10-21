@@ -1,30 +1,31 @@
 package sn.senforage.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Client {
+public class Client implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nomFamille;
-    private String village;
     private String adresse;
     private String numTel;
+    @ManyToOne
+    private Village village;
+    @ManyToOne
+    private Utilisateur utilisateur;
 
     public Client() {
     }
 
-    public Client(int id, String nomFamille, String village, String adresse, String numTel) {
-        this.id = id;
+    public Client(String nomFamille, String adresse, String numTel, Village village, Utilisateur utilisateur) {
         this.nomFamille = nomFamille;
-        this.village = village;
         this.adresse = adresse;
         this.numTel = numTel;
+        this.village = village;
+        this.utilisateur = utilisateur;
     }
 
     public int getId() {
@@ -43,14 +44,6 @@ public class Client {
         this.nomFamille = nomFamille;
     }
 
-    public String getVillage() {
-        return village;
-    }
-
-    public void setVillage(String village) {
-        this.village = village;
-    }
-
     public String getAdresse() {
         return adresse;
     }
@@ -65,5 +58,21 @@ public class Client {
 
     public void setNumTel(String numTel) {
         this.numTel = numTel;
+    }
+
+    public Village getVillage() {
+        return village;
+    }
+
+    public void setVillage(Village village) {
+        this.village = village;
+    }
+
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
     }
 }

@@ -47,7 +47,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
             <div class="sidebar-brand-icon">
                 <!--<i class="fas fa-laugh-wink"></i>-->
                 <img class="img-profile rounded-circle" src="public/img/logo_sen_forage.png">
@@ -60,7 +60,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="index.jsp">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Accueil</span></a>
         </li>
@@ -200,18 +200,20 @@
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <div class="container-fluid">
+            <div class="container-fluid text-center">
 
                 <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4 text-center">
                     <h1 class="h3 mb-0 text-gray-800">Tableau de bord</h1>
                     <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
                 </div>
 
                 <!-- Content Row -->
-                <div class="row">
+                <!--
+                <div class="row" content="center">
 
-                    <!-- Earnings (Monthly) Card Example -->
+                    < !-- Earnings (Monthly) Card Example -->
+                    <!--
                     <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card border-left-primary shadow h-100 py-2">
                             <div class="card-body">
@@ -224,8 +226,10 @@
                             </div>
                         </div>
                     </div>
+                    -->
 
                     <!-- Earnings (Monthly) Card Example -->
+                    <!--
                     <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card border-left-success shadow h-100 py-2">
                             <div class="card-body">
@@ -238,5 +242,7 @@
                             </div>
                         </div>
                     </div>
+                    -->
 
                 </div>
+                -->

@@ -7,5 +7,6 @@ import java.util.List;
 public interface IUtilisateur {
 
     public int add(Utilisateur utilisateur);
-    public List<Utilisateur> list();
+    public List<Utilisateur> listUtilisateur();
+    public Utilisateur getUserById(String idUser);
 }
