@@ -16,29 +16,25 @@
             <div class="card-body">
                 <table class="table table-bordered">
                     <tr>
-                        <th scope="col">#</th>
+                        <!-- <th scope="col">#</th>-->
                         <th scope="col">Identifiant Village</th>
                         <th scope="col"> Nom Village</th>
                         <th scope="col">Responsable</th>
                         <th scope="col">Action</th>
                     </tr>
-                    <%
-                        int numero = 1 ;
-                        //pageContext.setAttribute("valeur", new Integer(numero));
-                    %>
-                    <c:set var="numero" value="1" scope="page" />
+
                     <c:forEach items="${villages}" var="village">
                         <tr>
-                            <th scope="row"><c:out value="${numero}" /></th>
+                            <!-- <th scope="row">< c:out value="$ {numero}" /></th> -->
                             <td><c:out value="${village.idVillage}" /></td>
                             <td><c:out value="${village.nom}" /></td>
-                            <td><c:out value="${village.utilisateur}" /></td>
+                            <td><c:out value="${village.utilisateur.prenom}" /></td>
                             <td>
                                 <!-- <a href="< c:out value='$ {base_url}Utilisateur/edit/$ {user.idUser}' />" >Edit</a>-->
                                 Edit
                             </td>
                         </tr>
-                        <c:set var="numero" value="${numero}" scope="page" />
+
                     </c:forEach>
                 </table>
             </div>

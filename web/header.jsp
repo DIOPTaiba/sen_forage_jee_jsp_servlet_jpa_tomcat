@@ -47,7 +47,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="accueil.jsp">
             <div class="sidebar-brand-icon">
                 <!--<i class="fas fa-laugh-wink"></i>-->
                 <img class="img-profile rounded-circle" src="public/img/logo_sen_forage.png">
@@ -60,7 +60,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="index.jsp">
+            <a class="nav-link" href="accueil.jsp">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Accueil</span></a>
         </li>
@@ -138,16 +138,10 @@
                 </button>
 
                 <!-- Topbar Search -->
-                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
+
+                        <div class="text-center text-primary">
+                            <h1>Plateforme de gestion de Sen Forage</h1>
                         </div>
-                    </div>
-                </form>
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -202,11 +196,6 @@
             <!-- Begin Page Content -->
             <div class="container-fluid text-center">
 
-                <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4 text-center">
-                    <h1 class="h3 mb-0 text-gray-800">Tableau de bord</h1>
-                    <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
-                </div>
 
                 <!-- Content Row -->
                 <!--
@@ -242,7 +231,7 @@
                             </div>
                         </div>
                     </div>
-                    -->
+
 
                 </div>
                 -->

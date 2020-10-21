@@ -5,6 +5,7 @@ import sn.senforage.entities.Utilisateur;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import java.util.List;
 
 public class UtilisateurImpl implements IUtilisateur {
@@ -41,7 +42,20 @@ public class UtilisateurImpl implements IUtilisateur {
     @Override
     public Utilisateur getUserById(String idUser){
 
-        Utilisateur utilisateur = (Utilisateur) em.createQuery("SELECT u FROM Utilisateur u WHERE u.idUser=:n").setParameter("n",idUser).getSingleResult();
+        Utilisateur utilisateur = (Utilisateur) em.createQuery("SELECT u FROM Utilisateur u WHERE u.idUser=:n")
+                .setParameter("n",idUser).getSingleResult();
         return utilisateur;
+    }
+
+    @Override
+    public Utilisateur getUserByLogin(String email, String password) {
+        Query query =  em.createQuery("SELECT u FROM Utilisateur u WHERE u.email=:e AND u.password=:p");
+                query.setParameter("e",email);
+        query.setParameter("p",password);
+        try {
+            return (Utilisateur) query.getSingleResult();
+        } catch (Exception e){
+            return null;
+        }
     }
 }

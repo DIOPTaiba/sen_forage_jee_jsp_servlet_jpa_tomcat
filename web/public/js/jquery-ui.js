@@ -4477,7 +4477,7 @@ var widgetsAccordion = $.widget( "ui.accordion", {
 
 		var keyCode = $.ui.keyCode,
 			length = this.headers.length,
-			currentIndex = this.headers.index( event.target ),
+			currentIndex = this.headers.aindex( event.target ),
 			toFocus = false;
 
 		switch ( event.keyCode ) {
@@ -4546,7 +4546,7 @@ var widgetsAccordion = $.widget( "ui.accordion", {
 		} else {
 
 			// make sure active index is correct
-			options.active = this.headers.index( this.active );
+			options.active = this.headers.aindex( this.active );
 		}
 
 		this._destroyIcons();
@@ -4735,7 +4735,7 @@ var widgetsAccordion = $.widget( "ui.accordion", {
 			return;
 		}
 
-		options.active = collapsing ? false : this.headers.index( clicked );
+		options.active = collapsing ? false : this.headers.aindex( clicked );
 
 		// When the call to ._toggle() comes after the class changes
 		// it causes a very odd bug in IE 8 (see #6720)
@@ -4820,7 +4820,7 @@ var widgetsAccordion = $.widget( "ui.accordion", {
 			adjust = 0,
 			boxSizing = toShow.css( "box-sizing" ),
 			down = toShow.length &&
-				( !toHide.length || ( toShow.index() < toHide.index() ) ),
+				( !toHide.length || ( toShow.aindex() < toHide.aindex() ) ),
 			animate = this.options.animate || {},
 			options = down && animate.down || animate,
 			complete = function() {
@@ -5155,7 +5155,7 @@ var widgetsMenu = $.widget( "ui.menu", {
 			}
 
 			match = this._filterMenuItems( character );
-			match = skip && match.index( this.active.next() ) !== -1 ?
+			match = skip && match.aindex( this.active.next() ) !== -1 ?
 				this.active.nextAll( ".ui-menu-item" ) :
 				match;
 
@@ -12040,7 +12040,7 @@ $.widget( "ui.dialog", {
 		};
 		this.originalPosition = {
 			parent: this.element.parent(),
-			index: this.element.parent().children().index( this.element )
+			index: this.element.parent().children().aindex( this.element )
 		};
 		this.originalTitle = this.element.attr( "title" );
 		if ( this.options.title == null && this.originalTitle != null ) {
@@ -13954,16 +13954,16 @@ var widgetsSelectmenu = $.widget( "ui.selectmenu", [ $.ui.formResetMixin, {
 					var item = ui.item.data( "ui-selectmenu-item" );
 
 					// Prevent inital focus from firing and check if its a newly focused item
-					if ( that.focusIndex != null && item.index !== that.focusIndex ) {
+					if ( that.focusIndex != null && item.aindex !== that.focusIndex ) {
 						that._trigger( "focus", event, { item: item } );
 						if ( !that.isOpen ) {
 							that._select( item, event );
 						}
 					}
-					that.focusIndex = item.index;
+					that.focusIndex = item.aindex;
 
 					that.button.attr( "aria-activedescendant",
-						that.menuItems.eq( item.index ).attr( "id" ) );
+						that.menuItems.eq( item.aindex ).attr( "id" ) );
 				}
 			} )
 			.menu( "instance" );
@@ -14301,12 +14301,12 @@ var widgetsSelectmenu = $.widget( "ui.selectmenu", [ $.ui.formResetMixin, {
 		var oldIndex = this.element[ 0 ].selectedIndex;
 
 		// Change native select element
-		this.element[ 0 ].selectedIndex = item.index;
+		this.element[ 0 ].selectedIndex = item.aindex;
 		this.buttonItem.replaceWith( this.buttonItem = this._renderButtonItem( item ) );
 		this._setAria( item );
 		this._trigger( "select", event, { item: item } );
 
-		if ( item.index !== oldIndex ) {
+		if ( item.aindex !== oldIndex ) {
 			this._trigger( "change", event, { item: item } );
 		}
 
@@ -14314,7 +14314,7 @@ var widgetsSelectmenu = $.widget( "ui.selectmenu", [ $.ui.formResetMixin, {
 	},
 
 	_setAria: function( item ) {
-		var id = this.menuItems.eq( item.index ).attr( "id" );
+		var id = this.menuItems.eq( item.aindex ).attr( "id" );
 
 		this.button.attr( {
 			"aria-labelledby": id,

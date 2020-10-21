@@ -27,7 +27,7 @@
                         <tr>
                             <th scope="row"><c:out value="${client.id}" /></th>
                             <td><c:out value="${client.nomFamille}" /></td>
-                            <td><c:out value="${client.village}" /></td>
+                            <td><c:out value="${client.village.nom}" /></td>
                             <td><c:out value="${client.adresse}" /></td>
                             <td><c:out value="${client.numTel}" /></td>
                             <td>

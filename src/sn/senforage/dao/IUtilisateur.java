@@ -9,4 +9,5 @@ public interface IUtilisateur {
     public int add(Utilisateur utilisateur);
     public List<Utilisateur> listUtilisateur();
     public Utilisateur getUserById(String idUser);
+    public Utilisateur getUserByLogin(String email, String password);
 }
