@@ -10,7 +10,7 @@
 <footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Mor DIOP Taiba Simplon</span>
+            <span>Copyright &copy; Mor DIOP Taiba Simplon 2020</span>
         </div>
     </div>
 </footer>
@@ -38,10 +38,13 @@
                 </button>
             </div>
             <div class="modal-body">Selectionez "Logout" pour vous deconnecter et fermer votre session.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
-            </div>
+            <form action="Logout" method="post">
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                    <!-- <a class="btn btn-primary" href="Logout ">Logout</a> -->
+                    <input class="btn btn-primary" type="submit" value="Logout">
+                </div>
+            </form>
         </div>
     </div>
 </div>

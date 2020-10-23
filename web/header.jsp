@@ -25,7 +25,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="public/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="public/css/sb-admin-2.min2.css" rel="stylesheet">
     <script src="public/js/jquery.js"></script>
     <script src="public/js/jquery-ui.js"></script>
     <script src="public/js/jquery-ui.min.js"></script>
@@ -39,6 +39,19 @@
 </head>
 
 <body id="page-top">
+
+   <%
+        if (session != null) {
+            if (session.getAttribute("prenom") != null) {
+                String name = (String) session.getAttribute("prenom");
+                out.print("Hello, " + name + "  Welcome to ur Profile");
+            } else {
+                response.sendRedirect("index.jsp");
+            }
+        }else {
+                response.sendRedirect("index.jsp");
+            }
+   %>
 
 <!-- Page Wrapper -->
 <div id="wrapper">
@@ -61,20 +74,12 @@
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
             <a class="nav-link" href="accueil.jsp">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Accueil</span></a>
         </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider">
 
-        <!-- Heading -->
-
-
-        <!-- Heading -->
-        <div class="sidebar-heading">
-            Menu
-        </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
@@ -88,25 +93,27 @@
                 </div>
             </div>
         </li>
+        <!-- Nav Item - Villages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Villages</span>
             </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="Village">Village</a>
                 </div>
             </div>
         </li>
+        <!-- Nav Item - Responsables Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-folder"></i>
                 <span>Responsables</span>
             </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="Utilisateur">Responsable</a>
+                    <a class="collapse-item" href="Utilisateur">Responsables</a>
                 </div>
             </div>
         </li>
@@ -173,7 +180,7 @@
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Mor DIOP</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><% out.println(session.getAttribute("prenom")+" "+session.getAttribute("nom")); %></span>
                             <!--<img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">-->
                             <img class="img-profile rounded-circle" src="public/img/mortaiba.png">
                         </a>
