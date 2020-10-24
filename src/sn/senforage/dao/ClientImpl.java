@@ -36,7 +36,7 @@ public class ClientImpl implements IClient {
 
     @Override
     public List<Client> listClient() {
-        return em.createQuery("SELECT c FROM Client c").getResultList();
+        return em.createQuery("SELECT c FROM Client c ORDER BY c.id desc ").getResultList();
     }
 
 

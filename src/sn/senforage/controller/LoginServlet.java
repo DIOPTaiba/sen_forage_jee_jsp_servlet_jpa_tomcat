@@ -18,7 +18,6 @@ import java.io.PrintWriter;
 
 @WebServlet(value = "/Login", name = "login")
 public class LoginServlet extends HttpServlet {
-
     //private static final long serialVersionUID = 1L;
 
     private IUtilisateur utilisateurdao;
@@ -50,11 +49,14 @@ public class LoginServlet extends HttpServlet {
         // Si la connexion réuissit on met la session à true
             HttpSession session = req.getSession(true);
         // on recupère le nom et prénom
+            session.setAttribute("user", email);
             session.setAttribute("prenom", userRecu.getPrenom());
             session.setAttribute("nom", userRecu.getNom());
+            session.setAttribute("urlPhoto", userRecu.getUrlPhoto());
+            session.setAttribute("idUser", userRecu.getIdUser());
         //ici on peut déconnecter le user si il reste 30 secondes inactif
-            //session.setMaxInactiveInterval(30);
-            resp.sendRedirect("Login");
+            session.setMaxInactiveInterval(30);
+            resp.sendRedirect("Accueil");
         }
         else {
         //Si la connexion ne réussit pas on le redirige sur la page authentification
@@ -64,10 +66,5 @@ public class LoginServlet extends HttpServlet {
 
         }
 
-
-        //int ok = clientdao.add(client);
-        //resp.getWriter().println(ok);
-        //req.setAttribute("resultat", ok);
-        //doGet(req, resp);
     }
 }

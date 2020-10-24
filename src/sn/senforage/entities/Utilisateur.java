@@ -13,6 +13,7 @@ public class Utilisateur implements Serializable {
     private String prenom;
     private String email;
     private String password;
+    private String urlPhoto;
     @OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY)
     private List<Client> clients;
     @OneToMany(mappedBy = "utilisateur", fetch = FetchType.LAZY)
@@ -21,12 +22,13 @@ public class Utilisateur implements Serializable {
     public Utilisateur() {
     }
 
-    public Utilisateur(String idUser, String nom, String prenom, String email, String password) {
+    public Utilisateur(String idUser, String nom, String prenom, String email, String password, String urlPhoto) {
         this.idUser = idUser;
         this.nom = nom;
         this.prenom = prenom;
         this.email = email;
         this.password = password;
+        this.urlPhoto = urlPhoto;
     }
 
     public String getIdUser() {
@@ -69,6 +71,14 @@ public class Utilisateur implements Serializable {
         this.password = password;
     }
 
+    public String getUrlPhoto() {
+        return urlPhoto;
+    }
+
+    public void setUrlPhoto(String urlPhoto) {
+        this.urlPhoto = urlPhoto;
+    }
+
     public List<Client> getClients() {
         return clients;
     }
@@ -84,4 +94,5 @@ public class Utilisateur implements Serializable {
     public void setVillages(List<Village> villages) {
         this.villages = villages;
     }
+
 }

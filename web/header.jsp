@@ -18,7 +18,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SenForage</title>
+    <title>Sen - Forage</title>
 
     <!-- Custom fonts for this template-->
     <link href="public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -42,15 +42,14 @@
 
    <%
         if (session != null) {
-            if (session.getAttribute("prenom") != null) {
-                String name = (String) session.getAttribute("prenom");
-                out.print("Hello, " + name + "  Welcome to ur Profile");
+            if (session.getAttribute("user") != null) {
+                String name = (String) session.getAttribute("user");
+                out.print("Bienvenu " + name);
             } else {
-                response.sendRedirect("index.jsp");
+                response.sendRedirect("Login");
+                //request.getRequestDispatcher("Login");
             }
-        }else {
-                response.sendRedirect("index.jsp");
-            }
+        }
    %>
 
 <!-- Page Wrapper -->
@@ -105,7 +104,7 @@
                 </div>
             </div>
         </li>
-        <!-- Nav Item - Responsables Collapse Menu -->
+        <!-- Nav Item - Responsables Collapse Menu
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-folder"></i>
@@ -117,6 +116,7 @@
                 </div>
             </div>
         </li>
+        -->
 
 
         <!-- Divider -->
@@ -174,15 +174,14 @@
                     </li>
 
 
-
                     <div class="topbar-divider d-none d-sm-block"></div>
 
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small"><% out.println(session.getAttribute("prenom")+" "+session.getAttribute("nom")); %></span>
-                            <!--<img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">-->
-                            <img class="img-profile rounded-circle" src="public/img/mortaiba.png">
+                            <!--<img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">  +" "+session.getAttribute("nom"))-->
+                            <img class="img-profile rounded-circle" src="<% out.println(session.getAttribute("urlPhoto"));%>">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

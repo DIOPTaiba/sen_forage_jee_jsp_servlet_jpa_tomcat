@@ -62,15 +62,6 @@
                         <label>Nom village</label>
                         <input class="form-control" type="text" name="nomVillage" />
                     </div>
-                    <div class="form-group">
-                        <label>Utilisateur</label>
-                        <select class="form-control" name="idUser">
-                            <option>Selectionnez un Utilisateur</option>
-                            <c:forEach items="${utilisateurs}" var="utilisateur">
-                                <option value="${utilisateur.idUser}"> <c:out value="${utilisateur.prenom}" /> </option>
-                            </c:forEach>
-                        </select>
-                    </div>
                     <div>
                         <input class="btn btn-success" type="submit" value="Envoyer"/>
                         <input class="btn btn-danger" type="reset" value="Annuler"/>

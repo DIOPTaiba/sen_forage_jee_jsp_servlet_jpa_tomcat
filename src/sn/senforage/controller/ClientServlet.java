@@ -11,10 +11,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/Client", name = "client")
 public class ClientServlet extends HttpServlet {
+    //private static final long serialVersionUID = 1L;
 
     private IClient clientdao;
     private IVillage villagedao;
@@ -33,7 +35,6 @@ public class ClientServlet extends HttpServlet {
 
         req.setAttribute("clients", clientdao.listClient());
         req.setAttribute("villages", villagedao.listVillage());
-        req.setAttribute("utilisateurs", utilisateurdao.listUtilisateur());
         req.getRequestDispatcher("client/add.jsp").forward(req, resp);
 
     }
@@ -42,12 +43,13 @@ public class ClientServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         String nomFamille = req.getParameter("nomFamille").toString();
-        String idvillage = req.getParameter("village").toString();
-        String idUser = req.getParameter("user").toString();
         String adresse = req.getParameter("adresse").toString();
         String telephone = req.getParameter("telephone").toString();
-
+        String idvillage = req.getParameter("village").toString();
         Village villageRecu = villagedao.getVillageById(idvillage);
+
+        HttpSession session = req.getSession(true);
+        String idUser = (String) session.getAttribute("idUser");
         Utilisateur userRecu = utilisateurdao.getUserById(idUser);
 
         Client client = new Client();

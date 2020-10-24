@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = "/Village", name = "village")
@@ -31,7 +32,6 @@ public class VillageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //resp.getWriter().println("ok");
         req.setAttribute("villages", villagedao.listVillage());
-        req.setAttribute("utilisateurs", utilisateurdao.listUtilisateur());
         req.getRequestDispatcher("village/add.jsp").forward(req, resp);
     }
 
@@ -40,14 +40,15 @@ public class VillageServlet extends HttpServlet {
 
         String idVillage = req.getParameter("idVillage").toString();
         String nomVillage = req.getParameter("nomVillage").toString();
-        String idUser = req.getParameter("idUser");
 
-        Utilisateur utilisateur = utilisateurdao.getUserById(idUser);
+        HttpSession session = req.getSession(true);
+        String idUser = (String) session.getAttribute("idUser");
+        Utilisateur userRecu = utilisateurdao.getUserById(idUser);
 
         Village village = new Village();
         village.setIdVillage(idVillage);
         village.setNom(nomVillage);
-        village.setUtilisateur(utilisateur);
+        village.setUtilisateur(userRecu);
 
 
         int ok = villagedao.add(village);
