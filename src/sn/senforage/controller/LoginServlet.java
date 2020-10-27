@@ -29,7 +29,13 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("accueil.jsp").forward(req, resp);
+
+        if (req.getSession().getAttribute("user")==null){
+            resp.sendRedirect("/SenForage/");
+        } else{
+            req.getRequestDispatcher("accueil.jsp").forward(req, resp);
+        }
+
     }
 
     @Override
@@ -49,13 +55,13 @@ public class LoginServlet extends HttpServlet {
         // Si la connexion réuissit on met la session à true
             HttpSession session = req.getSession(true);
         // on recupère le nom et prénom
-            session.setAttribute("user", email);
+            session.setAttribute("user", userRecu);
             session.setAttribute("prenom", userRecu.getPrenom());
             session.setAttribute("nom", userRecu.getNom());
             session.setAttribute("urlPhoto", userRecu.getUrlPhoto());
             session.setAttribute("idUser", userRecu.getIdUser());
-        //ici on peut déconnecter le user si il reste 30 secondes inactif
-            session.setMaxInactiveInterval(30);
+        //ici on peut déconnecter le user si il reste 60 secondes inactif
+            session.setMaxInactiveInterval(60);
             resp.sendRedirect("Accueil");
         }
         else {

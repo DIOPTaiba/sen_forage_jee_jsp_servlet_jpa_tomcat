@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:include page="../header.jsp"></jsp:include>
+<jsp:include page="../../header.jsp"></jsp:include>
 
 <!-- Content Row -->
 
@@ -10,26 +10,24 @@
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Liste des clients</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Liste des utilisateurs</h6>
             </div>
             <!-- Card Body -->
             <div class="card-body">
                 <table class="table table-bordered">
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Nom de Famille</th>
-                        <th scope="col">Village</th>
-                        <th scope="col">Adresse</th>
-                        <th scope="col">Telephone</th>
+                        <th scope="col">IdUtilisateur</th>
+                        <th scope="col">Prenom</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Email</th>
                         <th scope="col">Action</th>
                     </tr>
-                    <c:forEach items="${clients}" var="client">
+                    <c:forEach items="${utilisateurs}" var="user">
                         <tr>
-                            <th scope="row"><c:out value="${client.id}" /></th>
-                            <td><c:out value="${client.nomFamille}" /></td>
-                            <td><c:out value="${client.village.nom}" /></td>
-                            <td><c:out value="${client.adresse}" /></td>
-                            <td><c:out value="${client.numTel}" /></td>
+                            <td><c:out value="${user.idUser}" /></td>
+                            <td><c:out value="${user.nom}" /></td>
+                            <td><c:out value="${user.prenom}" /></td>
+                            <td><c:out value="${user.email}" /></td>
                             <td>
                                 <!-- <a href="< c:out value='$ {base_url}Utilisateur/edit/$ {user.idUser}' />" >Edit</a>-->
                                 Edit
@@ -46,36 +44,34 @@
         <div class="card shadow mb-4">
             <!-- Card Header - Dropdown -->
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Ajout Client</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Ajout Utilisateur</h6>
             </div>
             <!-- Card Body -->
             <div class="card-body">
                 <c:if test="${resultat == 1}">
-                    <div id="message" class="alert alert-success">Client ajoute avec succes</div>
+                    <div id="message" class="alert alert-success">Utilisateur ajoute avec succes</div>
                 </c:if>
-                <form method="post" action="Client">
+                <form method="post" action="Utilisateur">
                     <div class="form-group">
-                        <label>Nom du Client</label>
-                        <input class="form-control" type="text" name="nomFamille" />
+                        <label>Identifiant utilisateur</label>
+                        <input class="form-control" type="text" name="idUser" />
                     </div>
                     <div class="form-group">
-                        <label>Adresse</label>
-                        <input class="form-control" type="text" name="adresse" />
+                        <label>Nom</label>
+                        <input class="form-control" type="text" name="nom" />
                     </div>
                     <div class="form-group">
-                        <label>Telephone</label>
-                        <input class="form-control" type="text" name="telephone" />
+                        <label>Prenom</label>
+                        <input class="form-control" type="text" name="prenom" />
                     </div>
                     <div class="form-group">
-                        <label>Village</label>
-                        <select class="form-control" name="village">
-                            <option>Selectionnez un village</option>
-                            <c:forEach items="${villages}" var="village">
-                                <option value="${village.idVillage}"> <c:out value="${village.nom}" /> </option>
-                            </c:forEach>
-                        </select>
+                        <label>Email</label>
+                        <input class="form-control" type="email" name="email" />
                     </div>
-
+                    <div class="form-group">
+                        <label>Mot de passe</label>
+                        <input class="form-control" type="password" name="password" />
+                    </div>
                     <div>
                         <input class="btn btn-success" type="submit" value="Envoyer"/>
                         <input class="btn btn-danger" type="reset" value="Annuler"/>
@@ -86,4 +82,4 @@
     </div>
 </div>
 
-<jsp:include page="../footer.jsp"></jsp:include>
+<jsp:include page="../../footer.jsp"></jsp:include>

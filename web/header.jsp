@@ -41,15 +41,13 @@
 <body id="page-top">
 
    <%
-        if (session != null) {
-            if (session.getAttribute("user") != null) {
-                String name = (String) session.getAttribute("user");
+            if (request.getSession().getAttribute("user") != null) {
+                String name = (String) request.getSession().getAttribute("prenom");
                 out.print("Bienvenu " + name);
             } else {
                 response.sendRedirect("Login");
                 //request.getRequestDispatcher("Login");
             }
-        }
    %>
 
 <!-- Page Wrapper -->

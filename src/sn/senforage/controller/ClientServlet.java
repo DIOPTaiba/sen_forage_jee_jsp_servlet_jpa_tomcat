@@ -32,10 +32,14 @@ public class ClientServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //resp.getWriter().println("ok");
+        if (req.getSession().getAttribute("user")==null){
+            resp.sendRedirect("/SenForage/");
+        } else{
 
-        req.setAttribute("clients", clientdao.listClient());
-        req.setAttribute("villages", villagedao.listVillage());
-        req.getRequestDispatcher("client/add.jsp").forward(req, resp);
+            req.setAttribute("clients", clientdao.listClient());
+            req.setAttribute("villages", villagedao.listVillage());
+            req.getRequestDispatcher("WEB-INF/client/add.jsp").forward(req, resp);
+        }
 
     }
 

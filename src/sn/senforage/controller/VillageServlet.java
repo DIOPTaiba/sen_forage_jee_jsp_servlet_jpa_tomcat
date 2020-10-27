@@ -31,8 +31,12 @@ public class VillageServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //resp.getWriter().println("ok");
-        req.setAttribute("villages", villagedao.listVillage());
-        req.getRequestDispatcher("village/add.jsp").forward(req, resp);
+        if (req.getSession().getAttribute("user")==null){
+            resp.sendRedirect("/SenForage/");
+        } else{
+            req.setAttribute("villages", villagedao.listVillage());
+            req.getRequestDispatcher("WEB-INF/village/add.jsp").forward(req, resp);
+        }
     }
 
     @Override
